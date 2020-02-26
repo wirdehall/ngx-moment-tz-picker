@@ -1,0 +1,23 @@
+<h1>Demo of datetime-picker.</h1>
+
+<div class="example">
+  <h2>Basic example</h2>
+  <ngx-datetime-picker
+    [(dateTime)]="dateTime1"
+    label="test"
+  ></ngx-datetime-picker>
+</div>
+
+<div class="example">
+  <h2>Do something when date changes:</h2>
+  <ngx-datetime-picker
+    [(dateTime)]="dateTime2"
+    label="test"
+    (dateTimeChange)="changed($event)"
+  ></ngx-datetime-picker>
+  <div class="change-header">
+    <h3>Change event to string:</h3>
+    <i>(Check console.log for more details)</i>
+  </div>
+  <span>{{lastEvent}}</span>
+</div>
