@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 // import { DatetimePickerModule } from 'projects/datetime-picker/src/lib/datetime-picker.module';
-import { DatetimePickerModule } from 'dist/datetime-picker';
+import { DatetimePickerModule } from 'dist/ngx-moment-tz-picker';
 
 import { AppComponent } from './app.component';
 
