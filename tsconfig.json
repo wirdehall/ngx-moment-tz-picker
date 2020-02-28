@@ -20,8 +20,8 @@
     ],
     "paths": {
       "datetime-picker": [
-        "dist/datetime-picker/datetime-picker",
-        "dist/datetime-picker"
+        "dist/ngx-moment-tz-picker/ngx-moment-tz-picker",
+        "dist/ngx-moment-tz-picker"
       ]
     }
   },

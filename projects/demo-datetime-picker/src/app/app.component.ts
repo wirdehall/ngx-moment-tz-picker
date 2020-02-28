@@ -9,7 +9,6 @@ import moment from 'moment-timezone';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public title = 'demo-datetime-picker';
   public dateTime1: moment.Moment;
   public dateTime2: moment.Moment;
   public lastEvent: string;

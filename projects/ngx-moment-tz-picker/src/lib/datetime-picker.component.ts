@@ -22,7 +22,6 @@ export class DatetimePickerComponent implements OnInit {
   public minute: FormControl;
 
   ngOnInit() {
-
     this.pressentableDateTime = new FormControl(this.dateTime.format('YYYY-MM-DD HH:mm'));
     this.hour = new FormControl(this.dateTime.format('HH'));
     this.minute = new FormControl(this.dateTime.format('mm'));

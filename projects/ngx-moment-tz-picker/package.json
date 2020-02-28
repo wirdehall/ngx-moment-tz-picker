@@ -1,11 +1,11 @@
 {
-  "name": "datetime-picker",
+  "name": "ngx-moment-tz-picker",
   "version": "0.0.1",
   "author": "Daniel Wirdehäll",
   "description": "A datetime picker using Moment timezone and Angular material calander.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wirdehall/ngx-moment-tz-picker.git",
+    "url": "https://github.com/wirdehall/ngx-moment-tz-picker.git"
   },
   "bugs": {
     "url": "https://github.com/wirdehall/ngx-moment-tz-picker/issues"
