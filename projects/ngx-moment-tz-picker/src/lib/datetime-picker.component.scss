@@ -2,6 +2,14 @@
   box-sizing: border-box;
   position: relative;
 
+  * {
+    box-sizing: border-box;
+  }
+
+  mat-form-field {
+    display: block;
+  }
+
   .popup {
     display: none;
     width: 296px;
@@ -38,7 +46,7 @@
 
         input {
           border: 1px solid #000;
-          width: 20px;
+          width: 32px;
           padding: 3px 5px;
           text-align: center;
         }

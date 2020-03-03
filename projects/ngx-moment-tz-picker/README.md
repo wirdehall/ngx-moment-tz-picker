@@ -3,8 +3,6 @@
 A library created for providing a datetime picker using momentjs with it's timezone plugin and Angular-material calander as the datepicker.
 Used when the project needs timezone dependent datetime picker instead of using the the browser timezone / offset.
 
-Take a look at a demo: [Stackblitz link](https://angular-ssmzzz.stackblitz.io).
-
 ## Dependencies needed in your project to use this lib
  - Angular
  - Angular material

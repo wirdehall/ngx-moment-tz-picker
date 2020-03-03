@@ -19,7 +19,7 @@
       "dom"
     ],
     "paths": {
-      "datetime-picker": [
+      "ngx-moment-tz-picker": [
         "dist/ngx-moment-tz-picker/ngx-moment-tz-picker",
         "dist/ngx-moment-tz-picker"
       ]

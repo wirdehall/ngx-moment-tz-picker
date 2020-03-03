@@ -7,13 +7,15 @@ import moment from 'moment-timezone';
 @Component({
   selector: 'ngx-datetime-picker',
   templateUrl: './datetime-picker.component.html',
-  styleUrls: ['./datetime-picker.component.scss']
+  styleUrls: ['./datetime-picker.component.scss'],
 })
 export class DatetimePickerComponent implements OnInit {
 
   @Input() dateTime: moment.Moment;
-  @Output() dateTimeChange = new EventEmitter<moment.Moment>();
   @Input() label: string;
+  @Input() errorMessages?: ReadonlyArray<string>;
+
+  @Output() dateTimeChange = new EventEmitter<moment.Moment>();
 
   public pressentableDateTime: FormControl;
   public selectedDate: moment.Moment;

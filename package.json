@@ -1,7 +1,7 @@
 {
   "name": "ngx-moment-tz-picker",
-  "version": "0.0.1",
-  "author": "Daniel Wirdehäll"
+  "version": "0.0.4",
+  "author": "Daniel Wirdehäll",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
