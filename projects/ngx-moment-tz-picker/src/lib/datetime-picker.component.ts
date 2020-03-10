@@ -91,11 +91,16 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
         this.dateTimeChange.emit(this.dateTime);
         this.hour.setValue(this.dateTime.format('HH'));
         this.minute.setValue(this.dateTime.format('mm'));
-      } else {
+      } else if (dateTime === '') {
         this.dateTime = moment('');
-        this.dateTimeChange.emit(this.dateTime);
+        this.dateTimeChange.emit(null);
         this.hour.setValue(0);
         this.minute.setValue(0);
+      } else {
+        this.dateTime = moment('');
+        this.hour.setValue(0);
+        this.minute.setValue(0);
+        this.dateTimeChange.emit(this.dateTime);
       }
     }
   }

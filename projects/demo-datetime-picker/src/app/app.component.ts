@@ -23,7 +23,11 @@ export class AppComponent implements OnInit {
 
   changed(event: moment.Moment) {
     console.log(event);
-    this.lastEvent = event.format('YYYY-MM-DD HH:mm (z)');
+    if (event === null) {
+      this.lastEvent = '';
+    } else {
+      this.lastEvent = event.format('YYYY-MM-DD HH:mm (z)');
+    }
   }
 
 }
