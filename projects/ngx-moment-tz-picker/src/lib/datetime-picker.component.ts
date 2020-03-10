@@ -28,7 +28,7 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
   public isInvalid = false;
 
   ngOnInit() {
-    if (this.dateTime.isValid()) {
+    if (this.dateTime !== null && this.dateTime.isValid()) {
       this.pressentableDateTime = new FormControl(this.dateTime.format('YYYY-MM-DD HH:mm'));
       this.hour = new FormControl(this.dateTime.format('HH'));
       this.minute = new FormControl(this.dateTime.format('mm'));
