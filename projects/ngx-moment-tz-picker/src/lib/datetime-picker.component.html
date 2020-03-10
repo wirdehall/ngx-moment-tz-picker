@@ -1,28 +1,30 @@
 <div class="datetime-picker-content">
   <mat-form-field>
     <mat-label>{{label}}</mat-label>
-    <input matInput [formControl]="pressentableDateTime" (blur)="manuallyFromForm($event.target.value)">
+    <input matInput [errorStateMatcher]="errorStateMatcher" [formControl]="pressentableDateTime" (blur)="manuallyFromForm($event.target.value)">
     <mat-datepicker-toggle matSuffix (click)="popupActive = !popupActive"></mat-datepicker-toggle>
     <mat-error *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</mat-error>
   </mat-form-field>
-  <div class="popup{{ popupActive ? ' active' : ''}}">
-    <mat-calendar start-view="month" [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
-    <div class="time-box">
-      <div class="hours">
-        <span class="button" (click)="incHour()">&#708;</span>
-        <input matInput [formControl]="hour" maxlength="2">
-        <span class="button" (click)="decHour()">&#709;</span>
+  <div class="popup-wrapper">
+    <div class="popup{{ popupActive ? ' active' : ''}}">
+      <mat-calendar start-view="month" [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
+      <div class="time-box">
+        <div class="hours">
+          <span class="button" (click)="incHour()">&#708;</span>
+          <input matInput [formControl]="hour" maxlength="2">
+          <span class="button" (click)="decHour()">&#709;</span>
+        </div>
+        <div class="colon">:</div>
+        <div class="minutes">
+          <span class="button" (click)="incMinute()">&#708;</span>
+          <input matInput [formControl]="minute" maxlength="2">
+          <span class="button" (click)="decMinute()">&#709;</span>
+        </div>
       </div>
-      <div class="colon">:</div>
-      <div class="minutes">
-        <span class="button" (click)="incMinute()">&#708;</span>
-        <input matInput [formControl]="minute" maxlength="2">
-        <span class="button" (click)="decMinute()">&#709;</span>
+      <div class="button-container">
+        <button mat-button color="primary" (click)="popupActive = false">Cancel</button>
+        <button mat-button color="primary" (click)="save()">Set</button>
       </div>
-    </div>
-    <div class="button-container">
-      <button mat-button color="primary" (click)="popupActive = false">Cancel</button>
-      <button mat-button color="primary" (click)="save()">Set</button>
     </div>
   </div>
 </div>

@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   public dateTime2: moment.Moment;
   public lastEvent: string;
 
+  public errorMessages = [];
+
   ngOnInit() {
     moment.tz.setDefault('America/Los_Angeles');
     this.dateTime1 = moment(1582629300000);

@@ -1,15 +1,17 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 
 import { FormControl } from '@angular/forms';
 // @ts-ignore
 import moment from 'moment-timezone';
+
+import MyErrorStateMatcher from './errorStateMatcher';
 
 @Component({
   selector: 'ngx-datetime-picker',
   templateUrl: './datetime-picker.component.html',
   styleUrls: ['./datetime-picker.component.scss'],
 })
-export class DatetimePickerComponent implements OnInit {
+export class DatetimePickerComponent implements OnChanges, OnInit {
 
   @Input() dateTime: moment.Moment;
   @Input() label: string;
@@ -22,12 +24,24 @@ export class DatetimePickerComponent implements OnInit {
   public popupActive = false;
   public hour: FormControl;
   public minute: FormControl;
+  public errorStateMatcher: MyErrorStateMatcher;
+  public isInvalid = false;
 
   ngOnInit() {
-    this.pressentableDateTime = new FormControl(this.dateTime.format('YYYY-MM-DD HH:mm'));
-    this.hour = new FormControl(this.dateTime.format('HH'));
-    this.minute = new FormControl(this.dateTime.format('mm'));
+    if (this.dateTime.isValid()) {
+      this.pressentableDateTime = new FormControl(this.dateTime.format('YYYY-MM-DD HH:mm'));
+      this.hour = new FormControl(this.dateTime.format('HH'));
+      this.minute = new FormControl(this.dateTime.format('mm'));
+    } else {
+      this.pressentableDateTime = new FormControl('');
+      this.hour = new FormControl(0);
+      this.minute = new FormControl(0);
+    }
     this.selectedDate = this.dateTime;
+  }
+
+  ngOnChanges() {
+    this.errorStateMatcher = new MyErrorStateMatcher(this.errorMessages);
   }
 
   incHour() {
@@ -72,10 +86,17 @@ export class DatetimePickerComponent implements OnInit {
 
   manuallyFromForm(dateTime: string) {
     if (!this.popupActive) {
-      this.dateTime = moment(dateTime);
-      this.dateTimeChange.emit(this.dateTime);
-      this.hour.setValue(this.dateTime.format('HH'));
-      this.minute.setValue(this.dateTime.format('mm'));
+      if (dateTime.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)) {
+        this.dateTime = moment(dateTime);
+        this.dateTimeChange.emit(this.dateTime);
+        this.hour.setValue(this.dateTime.format('HH'));
+        this.minute.setValue(this.dateTime.format('mm'));
+      } else {
+        this.dateTime = moment('');
+        this.dateTimeChange.emit(this.dateTime);
+        this.hour.setValue(0);
+        this.minute.setValue(0);
+      }
     }
   }
 
@@ -89,5 +110,4 @@ export class DatetimePickerComponent implements OnInit {
     this.dateTimeChange.emit(this.dateTime);
     this.popupActive = false;
   }
-
 }
