@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     moment.tz.setDefault('America/Los_Angeles');
-    this.dateTime1 = moment(1582629300000);
+    this.dateTime1 = null; // moment(1582629300000);
     this.dateTime2 = moment(1582629300000);
   }
 
