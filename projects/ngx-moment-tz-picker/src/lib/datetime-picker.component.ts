@@ -37,6 +37,7 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
       this.hour = new FormControl(0);
       this.minute = new FormControl(0);
     }
+    console.warn(this.dateTime);
     this.selectedDate = this.dateTime;
   }
 
