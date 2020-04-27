@@ -1,0 +1,9 @@
+Start by setting the correct node version using NVM:
+nvm use
+
+To deploy run:
+ng build ngx-moment-tz-picker --prod
+cd dist/ngx-moment-tz-picker
+
+To publish to npm run:
+npm publish
