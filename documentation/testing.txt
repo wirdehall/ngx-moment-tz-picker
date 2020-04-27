@@ -1,0 +1,2 @@
+To run test, first deploy acording to depoying.txt then run:
+npm start
