@@ -11,14 +11,17 @@ import moment from 'moment-timezone';
 export class AppComponent implements OnInit {
   public dateTime1: moment.Moment;
   public dateTime2: moment.Moment;
+  public dateTime3: moment.Moment;
   public lastEvent: string;
 
   public errorMessages = [];
+  public disabled = true;
 
   ngOnInit() {
     moment.tz.setDefault('America/Los_Angeles');
     this.dateTime1 = null; // moment(1582629300000);
     this.dateTime2 = moment(1582629300000);
+    this.dateTime3 = null;
   }
 
   changed(event: moment.Moment) {

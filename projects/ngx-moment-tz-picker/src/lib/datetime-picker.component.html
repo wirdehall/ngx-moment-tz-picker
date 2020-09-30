@@ -1,8 +1,13 @@
 <div class="datetime-picker-content">
   <mat-form-field>
     <mat-label>{{label}}</mat-label>
-    <input matInput [errorStateMatcher]="errorStateMatcher" [formControl]="pressentableDateTime" (blur)="manuallyFromForm($event.target.value)">
-    <mat-datepicker-toggle matSuffix (click)="popupActive = !popupActive"></mat-datepicker-toggle>
+    <input
+      matInput
+      [errorStateMatcher]="errorStateMatcher"
+      [formControl]="pressentableDateTime"
+      (blur)="manuallyFromForm($event.target.value)"
+    >
+    <mat-datepicker-toggle matSuffix (click)="!disabled && popupActive = !popupActive"></mat-datepicker-toggle>
     <mat-error *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</mat-error>
   </mat-form-field>
   <div class="popup-wrapper">

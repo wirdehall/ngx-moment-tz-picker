@@ -16,6 +16,7 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
   @Input() dateTime: moment.Moment;
   @Input() label: string;
   @Input() errorMessages?: ReadonlyArray<string>;
+  @Input() disabled?: boolean;
 
   @Output() dateTimeChange = new EventEmitter<moment.Moment>();
 
@@ -29,20 +30,26 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     if (this.dateTime !== null && this.dateTime.isValid()) {
-      this.pressentableDateTime = new FormControl(this.dateTime.format('YYYY-MM-DD HH:mm'));
+      this.pressentableDateTime = new FormControl({ value: this.dateTime.format('YYYY-MM-DD HH:mm'), disabled: this.disabled });
       this.hour = new FormControl(this.dateTime.format('HH'));
       this.minute = new FormControl(this.dateTime.format('mm'));
     } else {
-      this.pressentableDateTime = new FormControl('');
+      this.pressentableDateTime = new FormControl({ value: '', disabled: this.disabled });
       this.hour = new FormControl(0);
       this.minute = new FormControl(0);
     }
-    console.warn(this.dateTime);
     this.selectedDate = this.dateTime;
   }
 
   ngOnChanges() {
     this.errorStateMatcher = new MyErrorStateMatcher(this.errorMessages);
+    if (typeof this.pressentableDateTime !== 'undefined') {
+      if (this.disabled !== true) {
+        this.pressentableDateTime.enable();
+      } else {
+        this.pressentableDateTime.disable();
+      }
+    }
   }
 
   incHour() {

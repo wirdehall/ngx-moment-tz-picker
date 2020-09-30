@@ -1,11 +1,14 @@
-.example {
-  border-top: 1px solid #000;
+.content {
+  max-width: 1080px;
+  margin: 0px auto;
 
-  .change-header {
-    display: grid;
-    grid-template-columns: 200px auto;
-    i {
-      align-self: center;
+  .example {
+    .change-header {
+      display: grid;
+      grid-template-columns: 200px auto;
+      i {
+        align-self: center;
+      }
     }
   }
 }
