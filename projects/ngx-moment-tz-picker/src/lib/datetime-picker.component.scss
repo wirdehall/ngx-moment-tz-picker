@@ -10,7 +10,8 @@
   }
 
   .popup-wrapper {
-    position: absolute;
+    position: relative;
+
     /* Wrapp in an position absolute so it's visible even if the wrapping element has overflow: hidden */
     .popup {
       display: none;
@@ -22,6 +23,16 @@
       background-color: #FFFFFF;
       color: rgba(0,0,0,.87);
       z-index: 1000;
+
+      &.top {
+        top: auto;
+        bottom: 65px;
+      }
+
+      &.right {
+        left: auto;
+        right: 0px;
+      }
 
       &.active {
         display: block;

@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   public dateTime1: moment.Moment;
   public dateTime2: moment.Moment;
   public dateTime3: moment.Moment;
+  public dateTime4: moment.Moment;
   public lastEvent: string;
 
   public errorMessages = [];
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
     this.dateTime1 = null; // moment(1582629300000);
     this.dateTime2 = moment(1582629300000);
     this.dateTime3 = null;
+    this.dateTime4 = null;
   }
 
   changed(event: moment.Moment) {

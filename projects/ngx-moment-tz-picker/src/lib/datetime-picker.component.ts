@@ -17,6 +17,9 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
   @Input() label: string;
   @Input() errorMessages?: ReadonlyArray<string>;
   @Input() disabled?: boolean;
+  @Input() positionFromRight?: boolean;
+  @Input() positionFromTop?: boolean;
+  // Fix with css and class
 
   @Output() dateTimeChange = new EventEmitter<moment.Moment>();
 

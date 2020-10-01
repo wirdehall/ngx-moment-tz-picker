@@ -11,7 +11,7 @@
     <mat-error *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</mat-error>
   </mat-form-field>
   <div class="popup-wrapper">
-    <div class="popup{{ popupActive ? ' active' : ''}}">
+    <div class="popup{{ popupActive ? ' active' : ''}}{{ positionFromRight ? ' right' : ''}}{{ positionFromTop ? ' top' : ''}}">
       <mat-calendar start-view="month" [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
       <div class="time-box">
         <div class="hours">
