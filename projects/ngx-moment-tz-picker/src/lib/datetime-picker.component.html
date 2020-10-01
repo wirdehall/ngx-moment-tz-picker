@@ -1,4 +1,4 @@
-<div class="datetime-picker-content">
+<div class="datetime-picker-content" #datetimePickerContent>
   <mat-form-field>
     <mat-label>{{label}}</mat-label>
     <input
@@ -10,7 +10,7 @@
     <mat-datepicker-toggle matSuffix (click)="!disabled && popupActive = !popupActive"></mat-datepicker-toggle>
     <mat-error *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</mat-error>
   </mat-form-field>
-  <div class="popup-wrapper">
+  <div class="popup-wrapper" [ngStyle]="positionFromRight && rightOffset !== undefined ? {'margin-left': rightOffset + 'px'} : {}">
     <div class="popup{{ popupActive ? ' active' : ''}}{{ positionFromRight ? ' right' : ''}}{{ positionFromTop ? ' top' : ''}}">
       <mat-calendar start-view="month" [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
       <div class="time-box">

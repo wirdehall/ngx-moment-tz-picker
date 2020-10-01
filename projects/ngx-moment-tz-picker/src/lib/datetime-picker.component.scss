@@ -10,9 +10,9 @@
   }
 
   .popup-wrapper {
-    position: relative;
-
     /* Wrapp in an position absolute so it's visible even if the wrapping element has overflow: hidden */
+    position: absolute;
+
     .popup {
       display: none;
       width: 296px;

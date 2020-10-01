@@ -1,4 +1,15 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnChanges,
+  ElementRef,
+  HostListener,
+  AfterViewInit,
+  ViewChild
+} from '@angular/core';
 
 import { FormControl } from '@angular/forms';
 // @ts-ignore
@@ -11,7 +22,7 @@ import MyErrorStateMatcher from './errorStateMatcher';
   templateUrl: './datetime-picker.component.html',
   styleUrls: ['./datetime-picker.component.scss'],
 })
-export class DatetimePickerComponent implements OnChanges, OnInit {
+export class DatetimePickerComponent implements OnChanges, OnInit, AfterViewInit {
 
   @Input() dateTime: moment.Moment;
   @Input() label: string;
@@ -19,7 +30,6 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
   @Input() disabled?: boolean;
   @Input() positionFromRight?: boolean;
   @Input() positionFromTop?: boolean;
-  // Fix with css and class
 
   @Output() dateTimeChange = new EventEmitter<moment.Moment>();
 
@@ -30,6 +40,10 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
   public minute: FormControl;
   public errorStateMatcher: MyErrorStateMatcher;
   public isInvalid = false;
+
+  public rightOffset: number;
+
+  @ViewChild('datetimePickerContent') datetimePickerContent: ElementRef;
 
   ngOnInit() {
     if (this.dateTime !== null && this.dateTime.isValid()) {
@@ -52,6 +66,15 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
       } else {
         this.pressentableDateTime.disable();
       }
+    }
+    if (typeof this.datetimePickerContent !== 'undefined') {
+      this.rightOffset = this.datetimePickerContent.nativeElement.offsetWidth;
+    }
+  }
+
+  ngAfterViewInit() {
+    if (typeof this.datetimePickerContent !== 'undefined') {
+      setTimeout(() => { this.rightOffset = this.datetimePickerContent.nativeElement.offsetWidth; }, 100);
     }
   }
 
@@ -125,5 +148,12 @@ export class DatetimePickerComponent implements OnChanges, OnInit {
     this.pressentableDateTime = new FormControl(this.dateTime.format('YYYY-MM-DD HH:mm'));
     this.dateTimeChange.emit(this.dateTime);
     this.popupActive = false;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (typeof this.datetimePickerContent !== 'undefined') {
+      this.rightOffset = this.datetimePickerContent.nativeElement.offsetWidth;
+    }
   }
 }
