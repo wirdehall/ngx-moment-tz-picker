@@ -35,6 +35,16 @@
   </div>
 
   <div class="example">
+    <h2>Custom popup style</h2>
+    <ngx-datetime-picker
+      [(dateTime)]="dateTime5"
+      label="test"
+      [errorMessages]="errorMessages"
+      [customPopupStyle]="{ 'left': 'auto', 'right': '24px', 'background': 'pink' }"
+    ></ngx-datetime-picker>
+  </div>
+
+  <div class="example">
     <h2>Position top and from the right</h2>
     <ngx-datetime-picker
       [(dateTime)]="dateTime4"

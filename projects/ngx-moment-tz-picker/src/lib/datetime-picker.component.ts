@@ -30,6 +30,7 @@ export class DatetimePickerComponent implements OnChanges, OnInit, AfterViewInit
   @Input() disabled?: boolean;
   @Input() positionFromRight?: boolean;
   @Input() positionFromTop?: boolean;
+  @Input() customPopupStyle?: string;
 
   @Output() dateTimeChange = new EventEmitter<moment.Moment>();
 
