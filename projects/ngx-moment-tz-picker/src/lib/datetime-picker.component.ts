@@ -31,6 +31,7 @@ export class DatetimePickerComponent implements OnChanges, OnInit, AfterViewInit
   @Input() positionFromRight?: boolean;
   @Input() positionFromTop?: boolean;
   @Input() customPopupStyle?: string;
+  @Input() autoUpdateDatetime?: boolean;
 
   @Output() dateTimeChange = new EventEmitter<moment.Moment>();
 
@@ -46,7 +47,7 @@ export class DatetimePickerComponent implements OnChanges, OnInit, AfterViewInit
 
   @ViewChild('datetimePickerContent') datetimePickerContent: ElementRef;
 
-  ngOnInit() {
+  setDate() {
     if (this.dateTime !== null && this.dateTime.isValid()) {
       this.pressentableDateTime = new FormControl({ value: this.dateTime.format('YYYY-MM-DD HH:mm'), disabled: this.disabled });
       this.hour = new FormControl(this.dateTime.format('HH'));
@@ -59,7 +60,14 @@ export class DatetimePickerComponent implements OnChanges, OnInit, AfterViewInit
     this.selectedDate = this.dateTime;
   }
 
+  ngOnInit() {
+    this.setDate();
+  }
+
   ngOnChanges() {
+    if (this.autoUpdateDatetime && this.selectedDate !== this.dateTime) {
+      this.setDate();
+    }
     this.errorStateMatcher = new MyErrorStateMatcher(this.errorMessages);
     if (typeof this.pressentableDateTime !== 'undefined') {
       if (this.disabled !== true) {
